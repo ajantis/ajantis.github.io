@@ -1,0 +1,51 @@
+# Site wide configuration
+
+title:            Dmitry Ivanov's Blog
+locale:           en_US
+url:              http://dmitryivanov.io
+
+
+# Jekyll configuration
+
+permalink:   /:categories/:title/
+markdown:    kramdown
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+
+# Site owner
+owner:
+  name: Dmitry Ivanov
+  avatar: bio-photo.jpg
+  bio: "Sr Engineer at TomTom, Amsterdam. Nerd and Scala geek. AWS and DevOps fanatic."
+  email: 
+  disqus-shortname: dmitryivanov
+  twitter: #idajantis
+  facebook: #dmitry.ivanov.507464
+  google:
+    plus: #DmitryIvanovZzz
+    analytics: 
+    verify: 
+    ad-client: 
+    ad-slot: 
+  bing-verify: 
+  github: #ajantis
+  stackoverflow: #http://stackoverflow.com/users/1178121/id-ajantis
+  linkedin: #71995576
+  instagram: #ajantis
+  lastfm: #idajantis
+  foursquare: #idajantis
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
