@@ -29,23 +29,23 @@ owner:
   name: Dmitry Ivanov
   avatar: bio-photo.jpg
   bio: "Sr Engineer at TomTom, Amsterdam. Nerd and Scala geek. AWS and DevOps fanatic."
-  email: 
+  email: id.ajantis@gmail.com
   disqus-shortname: dmitryivanov
-  twitter: #idajantis
-  facebook: #dmitry.ivanov.507464
+  twitter: idajantis
+  facebook: dmitry.ivanov.507464
   google:
-    plus: #DmitryIvanovZzz
+    plus: +DmitryIvanovZzz
     analytics: 
     verify: 
     ad-client: 
     ad-slot: 
   bing-verify: 
-  github: #ajantis
-  stackoverflow: #http://stackoverflow.com/users/1178121/id-ajantis
-  linkedin: #71995576
-  instagram: #ajantis
-  lastfm: #idajantis
-  foursquare: #idajantis
+  github: ajantis
+  stackoverflow: http://stackoverflow.com/users/1178121/id-ajantis
+  linkedin: 71995576
+  instagram: ajantis
+  lastfm: idajantis
+  foursquare: idajantis
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md"]
