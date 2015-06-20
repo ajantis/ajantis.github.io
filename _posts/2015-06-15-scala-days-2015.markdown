@@ -1,0 +1,171 @@
+---
+layout: post
+title: "ScalaDays 2015 in Amsterdam"
+modified:
+categories: 
+excerpt:
+comments: true
+tags: [scala, scaladays, conferences]
+date: 2015-06-15T01:54:48+01:00
+---
+
+<section id="table-of-contents" class="toc">
+<header>
+<h3>ScalaDays 2015 in Amsterdam</h3>
+</header>
+<div id="drawer" markdown="1">
+*  Auto generated table of contents
+{:toc}
+</div>
+</section><!-- /#table-of-contents -->
+
+### Amsterdam loves Scala!
+
+Last week Amsterdam was hosting [ScalaDays 2015](http://event.scaladays.org/scaladays-amsterdam-2015) conference. 
+I'm really happy that a huge Scala event has finally reached The Netherlands.
+
+<br/>
+
+[![Amsterdam Scala](http://photos1.meetupstatic.com/photos/event/3/5/f/e/highres_199753822.jpeg){: .align-left}](http://www.meetup.com/amsterdam-scala)
+
+There is a huge Scala community with relatively long history in here. First Scala user groups existed here since 2009-2010. Nowadays the biggest one, [Amsterdam.Scala meetup](http://www.meetup.com/amsterdam-scala), has more than 500 members. With events happening every 2-3 weeks (hackathons, talks, workshops) and awesome speaker line-ups[^1][^2][^3].
+It's far from the biggest Scala community in Europe, but definitely one of the most active ones (hard to compete with London Scala UG though :)
+
+So I'd like to share my thoughts on some talks I found particularly interesting.
+
+### Keynote. Martin Odersky: "Scala - where it came from, where it's going"
+
+It all started with [Martin's](https://twitter.com/odersky) keynote. As usual, he spent some time explaining how language was evolving and what exactly he understands by 'Scalable language' term. <br/>
+
+I really admire some irony he usually adds to his talks:
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/312/18990040075_83eb549ca3_h.jpg">
+		<img src="https://c1.staticflickr.com/1/312/18990040075_a034456d11_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/269/18990039615_c4b0b0b829_o.jpg">
+		<img src="https://c1.staticflickr.com/1/269/18990039615_279247da49_m.jpg">
+	</a>
+	<figcaption>"Scala - where it came from, where it's going" - Martin Odersky.</figcaption>
+</figure>
+
+But I guess the most interesting part was about Scala future.
+
+#### Making Scala TASTY
+{:.no_toc}
+
+[Meet TASTY (Typed Abstract Syntax Trees)](https://groups.google.com/forum/#!topic/scala-internals/hshvEUF3JUk) - an intermediate format for compiled Scala classes that aims to bring more backward compatibility for Scala libraries.
+
+It's not suprising at all that it's super important for Typesafe to solve binary compatibility issue, in order to satisfy Enterprise players and defeat this long-time counter-Scala argument. Overall, it looks to me as a better way to address that rather than just slowing down innovation as was suggested in 'Scala-should-be-boring' [Rod Jonhson's talk](https://www.parleys.com/tutorial/keynote-scala-2018) that was given at ScalaDays 2013.
+
+#### Better type system with Dotty
+{:.no_toc}
+
+[Dotty](https://github.com/lampepfl/dotty) - is a EPFL playground language platform for new generation of Scala with new and refined features.
+With it's generalised union/intersection types, implicit function types and etc it surely attracts a lot of attention amongsts typelevel people.
+
+It seems natural that two initiatives (improving binary compatibility and evolving the language) are coming together. And the former one should ease introducing the latter.
+Nevetheless it will probably take at least a couple of years till we get a chance to start playing with new Scala major version.
+
+#### Expressing effects in types
+{:.no_toc}
+
+Another interesting concept that Martin mentioned is 'better treatment of effects' which is essentially about being able to express code side effects (throwing exceptions, IO, null-dereferencing) via type system.
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/291/18803803110_96e9a53ea5_h.jpg">
+		<img src="https://c1.staticflickr.com/1/291/18803803110_5059e6f9e0_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/258/18991486415_5adf757fc7_h.jpg">
+		<img src="https://c1.staticflickr.com/1/258/18991486415_a10586cbb2_m.jpg">
+	</a>
+	<figcaption>"Better treatment of effects" - Martin Odersky.</figcaption>
+</figure>
+
+So on the second slide `throws` keyword from the first method signature is actually just a type `throws[R, Exception]` that requires to have an implicit `CanThrow[Exception]`, so called _capability_, in scope. Looks cool, isn't it? :)
+
+However, only time will show if it's feasible to make it 'non-boilerplatty' and useful.
+
+<br/>
+
+Link to his slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
+
+### Keynote. Jonas Bonér: "Life Beyond the Illusion of Present"
+
+The next keynote by Typesafe CTO [Jonas Bonér](https://twitter.com/jboner) was about essential concepts of distributed systems design. I always enjoy his talks on this topic. They are great at introducing people to new ways of thinking and reasoning about state and events in distributed systems.
+
+<figure class="third">
+	<a href="https://c4.staticflickr.com/4/3739/18992606695_83ea3f0278_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3739/18992606695_f08747e1dd_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/562/18804946718_c836a19701_h.jpg">
+		<img src="https://c1.staticflickr.com/1/562/18804946718_ec5056fbe3_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/492/18995633361_3e953cdcef_h.jpg">
+		<img src="https://c1.staticflickr.com/1/492/18995633361_6457beb889_m.jpg">
+	</a>
+	<figcaption>"Life Beyond the Illusion of Present" - Jonas Bonér.</figcaption>
+</figure>
+
+> "Tracking time is actually tracking causality."
+
+That's what important: **Causality** and events **Ordering**.
+
+* There is no such thing as _reliable_ time or _guaranteed_ message delivery.
+* Think in **facts**.
+* Never do in-place updates, just collect and apply new events/facts.
+* [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) to the rescue!
+
+[Event sourcing](http://martinfowler.com/eaaDev/EventSourcing.html) is the key. Updating the locally observed state is simply merging new facts with old ones:
+
+{% highlight ruby %}
+val newLocalPresent = 
+            observedPasts.foldLeft(oldLocalPresent) { _ merge _ }
+{% endhighlight %}
+
+Link to his slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
+
+### Roland Kuhn: "Project Gålbma: Actors vs. Types"
+
+[Roland](https://twitter.com/rolandkuhn)'s talk was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
+
+I'm a true fan of [Akka framework](http://akka.io). It is a great piece of software and it really helps building scalable applications faster and more effectively.
+But lack of type safety when working with actors was always a bit ... *strange* :). 
+
+Development with Akka nowadays largely depends on knowing common conventions and patterns. Could be cool if a type system, rather than just docs (which are **awesome** for Akka) and blogs, guides you in the right direction.
+
+<figure class="first">
+	<a href="https://c1.staticflickr.com/1/298/18805596168_6d27f33ee5_h.jpg">
+		<img src="https://c1.staticflickr.com/1/298/18805596168_5184ca630c_m.jpg">
+	</a>
+	<figcaption>Typed Channels in Akka 2.1, - Roland Kuhn.</figcaption>
+</figure>
+
+New typed Actor API proposal made me think: "Yes, that's a proper way to do it in Scala, language with a rich and strong type system."
+
+<figure class="third">
+	<a href="https://c1.staticflickr.com/1/534/18967021826_046828dfbe_h.jpg">
+		<img src="https://c1.staticflickr.com/1/534/18967021826_91f2ca40c5_m.jpg">
+	</a>	
+	<a href="https://c4.staticflickr.com/4/3773/18967021426_38265a5e8e_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3773/18967021426_bb3f33d47e_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/303/18807052649_32adba7232_h.jpg">
+		<img src="https://c1.staticflickr.com/1/303/18807052649_78354c014d_m.jpg">
+	</a>
+	<figcaption>Akka Typed API proposal, - Roland Kuhn.</figcaption>
+</figure>
+
+* `Actor` is characterised from now by a `Behavior[T]` represented as a partial function `Message | Event => Behavior`
+* No more overridable methods like `preStart`, `postStop`, etc: you can define reaction to these *Signals* in behavior function.
+* No more direct reference to actor `context`.
+* No more built-in `sender()`: you have to encode a sender reference to your message API.
+
+Latest Akka Typed docs and examples can be found here: [http://doc.akka.io/docs/akka/snapshot/scala/typed.html](http://doc.akka.io/docs/akka/snapshot/scala/typed.html)
+
+##### Links
+{:.no_toc}
+
+[^1]: [Matthias Doenitz](https://twitter.com/sirthias): [http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/](http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/)
+[^2]: [Nilanjan Raychaudhuri](https://twitter.com/nraychaudhuri): [http://www.meetup.com/amsterdam-scala/events/202145202/](http://www.meetup.com/amsterdam-scala/events/202145202/)
+[^3]: [Heiko Seeberger](https://twitter.com/hseeberger): [http://www.meetup.com/amsterdam-scala/events/178162102/](http://www.meetup.com/amsterdam-scala/events/178162102/)
