@@ -34,7 +34,7 @@ It's far from the biggest Scala community in Europe, but definitely one of the m
 
 So I'd like to share my thoughts on some talks I found particularly interesting.
 
-### Keynote. Martin Odersky: "Scala - where it came from, where it's going"
+### Martin Odersky and future of Scala
 
 It all started with [Martins](https://twitter.com/odersky) keynote. As usual, he spent some time explaining how language was evolving and what exactly he understands by 'Scalable language' term. <br/>
 
@@ -91,7 +91,7 @@ However, only time will show if it's feasible to make it 'non-boilerplatty' and 
 
 Slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
 
-### Keynote. Jonas Bonér: "Life Beyond the Illusion of Present"
+### Jonas Bonér: "Life Beyond the Illusion of Present"
 
 The next keynote by Typesafe CTO [Jonas Bonér](https://twitter.com/jboner) was about essential concepts of distributed systems design. I always enjoy his talks on this topic. They are great at introducing people to new ways of thinking and reasoning about state and events in distributed systems.
 
@@ -126,9 +126,9 @@ val newLocalPresent =
 
 Slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
 
-### Roland Kuhn: "Project Gålbma: Actors vs. Types"
+### Akka Actors vs Types
 
-[Rolands](https://twitter.com/rolandkuhn) talk was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
+[Rolands](https://twitter.com/rolandkuhn) talk (*"Project Gålbma: Actors vs. Types"*) was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
 
 I'm a true fan of [Akka framework](http://akka.io). It is a great piece of software and it really helps building scalable applications faster and more effectively.
 But lack of type safety when working with actors was always a bit ... *strange* :). 
