@@ -163,9 +163,25 @@ New typed Actor API proposal made me think: "Yes, that's a proper way to do it i
 
 Latest Akka Typed docs and examples can be found here: [http://doc.akka.io/docs/akka/snapshot/scala/typed.html](http://doc.akka.io/docs/akka/snapshot/scala/typed.html)
 
+### Lambda Architecture & Spark Streaming
+
+Another notable talk was by [Helena Edelson](https://twitter.com/helenaedelson) - *"Lambda Architecture with Spark Streaming, Kafka, Cassandra, Akka and Scala"*.
+
+She demonstrated how you can build stream processing pipelines leveraging high composability of this stack.
+
+Althought a bit too much Cassandra advertising (I like C*, but still), it was cool to see some snippets how you can glue these things together and what are potential use-cases.
+And of course [Spark connector](https://github.com/datastax/spark-cassandra-connector) for Cassandra is pretty awesome. Now other NoSQL vendors start understanding[^4] necessity of Spark-support as well. :)
+
+Few years ago [Storm](https://storm.apache.org) was almost a standard component of ['Lambda architecture'](http://lambda-architecture.net).  Event the term itself was coined by the [creator of Storm](http://nathanmarz.com). Now Spark Streaming together with Akka Streams, Kafka and others might get this place.
+
+<br/>
+
+Link to the slides: [http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala](http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala)
+
 ##### Links
 {:.no_toc}
 
 [^1]: [Matthias Doenitz](https://twitter.com/sirthias): [http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/](http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/)
 [^2]: [Nilanjan Raychaudhuri](https://twitter.com/nraychaudhuri): [http://www.meetup.com/amsterdam-scala/events/202145202/](http://www.meetup.com/amsterdam-scala/events/202145202/)
 [^3]: [Heiko Seeberger](https://twitter.com/hseeberger): [http://www.meetup.com/amsterdam-scala/events/178162102/](http://www.meetup.com/amsterdam-scala/events/178162102/)
+[^4]: Basho data platform: [http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/](http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/)
