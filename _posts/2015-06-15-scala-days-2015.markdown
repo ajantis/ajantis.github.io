@@ -264,6 +264,107 @@ Slides: [https://speakerdeck.com/heathermiller/function-passing-style-typed-dist
 
 <br/>
 
+### Rapture Result and Modes 
+
+[Jon Pretty](https://twitter.com/propensive) presentation with a quite complicated name (*"Delimited dependently-typed monadic checked exceptions in Scala"*) attracted my attention because of two things: 
+
+* Interesting concept of abstracting the actual return type of library API (using so called *Modes*).
+* A new `Result` container similar to `Either`, `ValidationNEL` and others.
+
+<figure class="second">
+	<a href="https://c4.staticflickr.com/4/3683/19027106135_84199294cb_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3683/19027106135_74e7bd5d05_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/434/18404561684_4128b103f3_h.jpg">
+		<img src="https://c1.staticflickr.com/1/434/18404561684_bb23a97350_m.jpg">
+	</a>
+	<figcaption>"Delimited dependently-typed monadic checked exceptions in Scala" - Jon Pretty.</figcaption>
+</figure>
+
+<br/>
+
+[Rapture.io](http://rapture.io) *Modes* allow users to choose the return type of the library API:
+
+{% highlight scala %}
+
+import modes.returnEither._
+Json.parse("[1, 2, 3]") // will have return type Either[ParseException, Json]
+
+... 
+
+import modes.returnFuture._
+Json.parse("[1, 2, 3]") // will immediately return a Future[Json]
+
+{% endhighlight %}
+
+It's looks like a cool magic, but I see few different scenarios where this might be useful: 
+
+* Turning library API to blocking for tests and to async in your main code.
+* Switching between, for example, `Either`-based or `Try`-based API without having to write your own wrappers.
+
+The tri-state `Return` type looks something in between of `Either` or `ValidationNEL`: 
+
+{% highlight scala %}
+
+val result: Result[Json, ParseException] = ...
+
+// result might be: 
+// `Answer` - successful result
+// `Errata` - contains _collected_ failures
+// `Unexpected` - contains a signle (non-recoverable?) exception
+
+{% endhighlight %}
+
+I liked the trick of simulating union types using '*with*': 
+
+{% highlight scala %}
+
+// Read 'with' as 'or'
+val result: Result[Json, DatabaseException with IOException with SerializationException] = ...
+
+{% endhighlight %}
+
+This is useful here as `Errata` is actually a typed Multimap.
+
+<br/>
+
+Slides: [http://rapture.io/talks/exceptions/sanfrancisco.html](http://rapture.io/talks/exceptions/sanfrancisco.html)
+
+<br/>
+
+### Kamon and Akka metrics
+
+There is a huge demand for Akka monitoring nowadays. [Typesafe console](http://resources.typesafe.com/docs/console/manual/overview.html) was looking great, but tracing performance was ... awful.
+
+Authors of [Kamon](http://kamon.io) are trying to meet that demand with their toolkit for collecting actor metrics and traces.
+
+[Ivan Topolnjak](https://twitter.com/ivantopo) showed in his talk, *"Kamon: Metrics and traces for your reactive application"*, how they were able to minimise performance impact of metrics collection to the system.
+It was interesting to know that they are using [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram) for this. 
+
+HdrHistogram (High Dynamic Range Histogram) is "A Histogram that supports recording and analyzing sampled data value counts across a configurable integer value range with configurable value precision within the range"[^5]. And it is really-really fast. :)
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/269/18839428380_237f0aafa1_h.jpg">
+		<img src="https://c1.staticflickr.com/1/269/18839428380_deec11dc9b_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/525/19021632152_4ee5d63f1a_h.jpg">
+		<img src="https://c1.staticflickr.com/1/525/19021632152_4cddb00ffb_m.jpg">
+	</a>
+	<figcaption>"Kamon: Metrics and traces for your reactive application" - Ivan Topolnjak.</figcaption>
+</figure>
+
+Tracing actor message flows is another important problem which is not fully solved yet.
+There is a still experimental [Akka Tracing](https://github.com/levkhomich/akka-tracing) extension. And Kamon also has some of these capabilities: [http://kamon.io/core/tracing/core-concepts/](http://kamon.io/core/tracing/core-concepts/).
+It would be cool to eventually have a visualization for flows like the one [Twitter Zipkin](https://github.com/twitter/zipkin) provides.
+
+Also would be nice to be able to trace composite `Futures`.
+
+### Other notable talks
+
+* [Amanda Laucher](http://twitter.com/pandamonial): "Types vs Tests : An Epic Battle?". That was a great talk and its old version is even available on InfoQ: [http://www.infoq.com/presentations/Types-Tests](http://www.infoq.com/presentations/Types-Tests)
+* [Richard Dallaway](http://twitter.com/d6y): "Towards Browser and Server Utopia with Scala.JS: an example using CRDTs". Cool example of coding CRDTs in Scala.JS.
+* [Josh Suereth](http://twitter.com/jsuereth) and [Eugene Yokota](http://twitter.com/eed3si9n): "The road to sbt 1.0 is paved with server". That was an entertaining talk about new [sbt](http://www.scala-sbt.org) features and how *sbt-server* is going to change our lives. =)
+
 ##### Links
 {:.no_toc}
 
@@ -271,3 +372,4 @@ Slides: [https://speakerdeck.com/heathermiller/function-passing-style-typed-dist
 [^2]: [Nilanjan Raychaudhuri](https://twitter.com/nraychaudhuri): [http://www.meetup.com/amsterdam-scala/events/202145202/](http://www.meetup.com/amsterdam-scala/events/202145202/)
 [^3]: [Heiko Seeberger](https://twitter.com/hseeberger): [http://www.meetup.com/amsterdam-scala/events/178162102/](http://www.meetup.com/amsterdam-scala/events/178162102/)
 [^4]: Basho data platform: [http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/](http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/)
+[^5]: High Dynamic Range Histogram: [http://hdrhistogram.github.io/HdrHistogram/](http://hdrhistogram.github.io/HdrHistogram/)
