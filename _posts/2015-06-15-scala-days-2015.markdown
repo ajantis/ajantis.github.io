@@ -88,7 +88,7 @@ However, only time will show if it's feasible to make it 'non-boilerplatty' and 
 
 <br/>
 
-Link to his slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
+Link to the slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
 
 ### Keynote. Jonas Bonér: "Life Beyond the Illusion of Present"
 
@@ -123,7 +123,7 @@ val newLocalPresent =
             observedPasts.foldLeft(oldLocalPresent) { _ merge _ }
 {% endhighlight %}
 
-Link to his slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
+Link to the slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
 
 ### Roland Kuhn: "Project Gålbma: Actors vs. Types"
 
