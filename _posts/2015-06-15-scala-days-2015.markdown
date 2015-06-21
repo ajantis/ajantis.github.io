@@ -35,7 +35,7 @@ So I'd like to share my thoughts on some talks I found particularly interesting.
 
 ### Keynote. Martin Odersky: "Scala - where it came from, where it's going"
 
-It all started with [Martin's](https://twitter.com/odersky) keynote. As usual, he spent some time explaining how language was evolving and what exactly he understands by 'Scalable language' term. <br/>
+It all started with [Martins](https://twitter.com/odersky) keynote. As usual, he spent some time explaining how language was evolving and what exactly he understands by 'Scalable language' term. <br/>
 
 I really admire some irony he usually adds to his talks:
 
@@ -56,13 +56,13 @@ But I guess the most interesting part was about Scala future.
 
 [Meet TASTY (Typed Abstract Syntax Trees)](https://groups.google.com/forum/#!topic/scala-internals/hshvEUF3JUk) - an intermediate format for compiled Scala classes that aims to bring more backward compatibility for Scala libraries.
 
-It's not suprising at all that it's super important for Typesafe to solve binary compatibility issue, in order to satisfy Enterprise players and defeat this long-time counter-Scala argument. Overall, it looks to me as a better way to address that rather than just slowing down innovation as was suggested in 'Scala-should-be-boring' [Rod Jonhson's talk](https://www.parleys.com/tutorial/keynote-scala-2018) that was given at ScalaDays 2013.
+It's not suprising at all that it's super important for Typesafe to solve binary compatibility issue, in order to satisfy Enterprise players and defeat this long-time counter-Scala argument. Overall, it looks to me as a better way to address that rather than just slowing down innovation as was suggested in 'Scala-should-be-boring' [Rod Jonhsons talk](https://www.parleys.com/tutorial/keynote-scala-2018) that was given at ScalaDays 2013.
 
 #### Better type system with Dotty
 {:.no_toc}
 
 [Dotty](https://github.com/lampepfl/dotty) - is a EPFL playground language platform for new generation of Scala with new and refined features.
-With it's generalised union/intersection types, implicit function types and etc it surely attracts a lot of attention amongsts typelevel people.
+With its generalised union/intersection types, implicit function types and etc it surely attracts a lot of attention amongsts typelevel people.
 
 It seems natural that two initiatives (improving binary compatibility and evolving the language) are coming together. And the former one should ease introducing the latter.
 Nevetheless it will probably take at least a couple of years till we get a chance to start playing with new Scala major version.
@@ -88,7 +88,7 @@ However, only time will show if it's feasible to make it 'non-boilerplatty' and 
 
 <br/>
 
-Link to the slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
+Slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
 
 ### Keynote. Jonas Bonér: "Life Beyond the Illusion of Present"
 
@@ -123,11 +123,11 @@ val newLocalPresent =
             observedPasts.foldLeft(oldLocalPresent) { _ merge _ }
 {% endhighlight %}
 
-Link to the slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
+Slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
 
 ### Roland Kuhn: "Project Gålbma: Actors vs. Types"
 
-[Roland](https://twitter.com/rolandkuhn)'s talk was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
+[Rolands](https://twitter.com/rolandkuhn) talk was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
 
 I'm a true fan of [Akka framework](http://akka.io). It is a great piece of software and it really helps building scalable applications faster and more effectively.
 But lack of type safety when working with actors was always a bit ... *strange* :). 
@@ -176,12 +176,12 @@ Few years ago [Storm](https://storm.apache.org) was almost a standard component 
 
 <br/>
 
-Link to the slides: [http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala](http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala)
+Slides: [http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala](http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala)
 
 ### Monad Transformers for Mere Mortals
 
 How often do you have to deal with nested containers? For example, `Future[Option[T]]` or `Future[Either[L,R]]`.
-Composing them together in *for-comprehensions* is not than easy. Consider this code sample from [Erik Bakker](https://twitter.com/eamelink)'s presentation *"Options in Futures, how to unsuck them"*:
+Composing them together in *for-comprehensions* is not than easy. Consider this code sample from [Erik Bakkers](https://twitter.com/eamelink) presentation *"Options in Futures, how to unsuck them"*:
 
 {% highlight scala %}
 val fa: Future[Option[Int]] = ???
@@ -224,7 +224,7 @@ Like awesome `ValidationNEL` of Scalaz, or `HList` of Shapeless, or these Monad 
 
 <br/>
 
-Link to slides from Erik's workshop: [https://speakerdeck.com/eamelink/flatten-your-code](https://speakerdeck.com/eamelink/flatten-your-code).
+Slides from Eriks workshop: [https://speakerdeck.com/eamelink/flatten-your-code](https://speakerdeck.com/eamelink/flatten-your-code).
 
 <br/>
 
