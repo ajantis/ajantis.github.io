@@ -23,7 +23,7 @@ share: true
 ### Amsterdam loves Scala!
 
 Last week Amsterdam was hosting [ScalaDays 2015](http://event.scaladays.org/scaladays-amsterdam-2015) conference. 
-I'm really happy that a huge Scala event has finally reached The Netherlands.
+I'm really happy that a big Scala event has finally reached The Netherlands.
 
 <br/>
 
