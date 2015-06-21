@@ -178,6 +178,58 @@ Few years ago [Storm](https://storm.apache.org) was almost a standard component 
 
 Link to the slides: [http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala](http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala)
 
+### Monad Transformers for Mere Mortals
+
+How often do you have to deal with nested containers? For example, `Future[Option[T]]` or `Future[Either[L,R]]`.
+Composing them together in *for-comprehensions* is not than easy. Consider this code sample from [Erik Bakker](https://twitter.com/eamelink)'s presentation *"Options in Futures, how to unsuck them"*:
+
+{% highlight scala %}
+val fa: Future[Option[Int]] = ???
+val fb: Future[Option[Int]] = ???
+
+// Problem, `a` and `b` are Option[Int], and not Int
+val result = 
+  for {
+  	a <- fa
+  	b <- fb
+  } yield a - b
+
+{% endhighlight %}
+
+To solve this, people usually end up creating a set of utility functions, implicit *transformers*, like *FutureOption[T]*, that allow you to *flatten containers*.
+Althought it works, you still have to steal^Wwrite these.
+
+Consider another solution using [Scalaz](https://github.com/scalaz/scalaz) `OptionT`, a so called *Monad Transformer*:
+
+{% highlight scala %}
+val fa: Future[Option[Int]] = ???
+val fb: Future[Option[Int]] = ???
+
+// Here, a and b are Int, extracted from both the Future and Option!
+val finalOptionT = 
+	for {
+		a <- OptionT(fa)
+		b <- OptionT(fb)
+	} yield a - b
+
+// And to get back to the normal structure
+val finalFutureOption: Future[Option[Int]] = finalOptionT.run
+
+{% endhighlight %}
+
+Often people in Scala community think that [Scalaz](https://github.com/scalaz/scalaz) or [Shapeless](https://github.com/milessabin/shapeless) are too hardcore and avoid them. 
+
+Sometimes it's a valid point :), but I prefer to borrow just essential stuff.
+Like awesome `ValidationNEL` of Scalaz, or `HList` of Shapeless, or these Monad Transformers `OptionT`, `\/` that Erik demonstrated.
+
+<br/>
+
+Link to slides from Erik's workshop: [https://speakerdeck.com/eamelink/flatten-your-code](https://speakerdeck.com/eamelink/flatten-your-code).
+
+<br/>
+
+I can also recommend another great presentation on Scalaz '*gateway drugs*' by [Brendan McAdams](http://twitter.com/rit): [https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs](https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs).
+
 ##### Links
 {:.no_toc}
 
