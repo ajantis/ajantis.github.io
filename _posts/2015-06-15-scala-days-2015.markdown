@@ -3,10 +3,11 @@ layout: post
 title: "ScalaDays 2015 in Amsterdam"
 modified:
 categories: 
-excerpt:
+excerpt: "My personal highlights of ScalaDays 2015"
 comments: true
 tags: [scala, scaladays, conferences]
 date: 2015-06-15T01:54:48+01:00
+share: true
 ---
 
 <section id="table-of-contents" class="toc">
