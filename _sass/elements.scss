@@ -18,6 +18,12 @@ article img {
 	vertical-align: middle; 
 	-ms-interpolation-mode: bicubic; 
 }
+.align-left {
+    float: left;
+}
+.align-right {
+    float: left;
+}
 svg:not(:root) {
 		overflow: hidden; 
 }

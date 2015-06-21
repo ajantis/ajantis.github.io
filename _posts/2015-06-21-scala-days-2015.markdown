@@ -1,0 +1,376 @@
+---
+layout: post
+title: "ScalaDays 2015 in Amsterdam"
+modified:
+categories: 
+excerpt: "My personal highlights of ScalaDays 2015"
+comments: true
+tags: [scala, scaladays, conferences]
+date: 2015-06-21T20:01:48+01:00
+share: true
+---
+
+<section id="table-of-contents" class="toc">
+<header>
+<h3>ScalaDays 2015 in Amsterdam</h3>
+</header>
+<div id="drawer" markdown="1">
+*  Auto generated table of contents
+{:toc}
+</div>
+</section><!-- /#table-of-contents -->
+
+### Amsterdam loves Scala!
+
+Last week Amsterdam was hosting [ScalaDays 2015](http://event.scaladays.org/scaladays-amsterdam-2015) conference. 
+I'm really happy that a huge Scala event has finally reached The Netherlands.
+
+<br/>
+
+[![Amsterdam Scala](http://photos1.meetupstatic.com/photos/event/3/5/f/e/highres_199753822.jpeg){: .align-left}](http://www.meetup.com/amsterdam-scala)
+
+There is a huge Scala community with relatively long history in here. First Scala user groups existed here since 2009-2010. Nowadays the biggest one, [Amsterdam.Scala meetup](http://www.meetup.com/amsterdam-scala), has more than 500 members. With events happening every 2-3 weeks (hackathons, talks, workshops) and awesome speaker line-ups[^1][^2][^3].
+It's far from the biggest Scala community in Europe, but definitely one of the most active ones (hard to compete with London Scala UG though :)
+
+So I'd like to share my thoughts on some talks I found particularly interesting.
+
+### Martin Odersky and future of Scala
+
+It all started with [Martins](https://twitter.com/odersky) keynote. As usual, he spent some time explaining how language was evolving and what exactly he understands by 'Scalable language' term. <br/>
+
+I really admire some irony he usually adds to his talks:
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/312/18990040075_83eb549ca3_h.jpg">
+		<img src="https://c1.staticflickr.com/1/312/18990040075_a034456d11_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/269/18990039615_c4b0b0b829_o.jpg">
+		<img src="https://c1.staticflickr.com/1/269/18990039615_279247da49_m.jpg">
+	</a>
+	<figcaption>"Scala - where it came from, where it's going" - Martin Odersky.</figcaption>
+</figure>
+
+But I guess the most interesting part was about Scala future.
+
+#### Making Scala TASTY
+{:.no_toc}
+
+[Meet TASTY (Typed Abstract Syntax Trees)](https://groups.google.com/forum/#!topic/scala-internals/hshvEUF3JUk) - an intermediate format for compiled Scala classes that aims to bring more backward compatibility for Scala libraries.
+
+It's not suprising at all that it's super important for Typesafe to solve binary compatibility issue, in order to satisfy Enterprise players and defeat this long-time counter-Scala argument. Overall, it looks to me as a better way to address that rather than just slowing down innovation as was suggested in 'Scala-should-be-boring' [Rod Jonhsons talk](https://www.parleys.com/tutorial/keynote-scala-2018) that was given at ScalaDays 2013.
+
+#### Better type system with Dotty
+{:.no_toc}
+
+[Dotty](https://github.com/lampepfl/dotty) - is a EPFL playground language platform for new generation of Scala with new and refined features.
+With its generalised union/intersection types, implicit function types and etc it surely attracts a lot of attention amongsts typelevel people.
+
+It seems natural that two initiatives (improving binary compatibility and evolving the language) are coming together. And the former one should ease introducing the latter.
+Nevetheless it will probably take at least a couple of years till we get a chance to start playing with new Scala major version.
+
+#### Expressing effects in types
+{:.no_toc}
+
+Another interesting concept that Martin mentioned is 'better treatment of effects' which is essentially about being able to express code side effects (throwing exceptions, IO, null-dereferencing) via type system.
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/291/18803803110_96e9a53ea5_h.jpg">
+		<img src="https://c1.staticflickr.com/1/291/18803803110_5059e6f9e0_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/258/18991486415_5adf757fc7_h.jpg">
+		<img src="https://c1.staticflickr.com/1/258/18991486415_a10586cbb2_m.jpg">
+	</a>
+	<figcaption>"Better treatment of effects" - Martin Odersky.</figcaption>
+</figure>
+
+So on the second slide `throws` keyword from the first method signature is actually just a type `throws[R, Exception]` that requires to have an implicit `CanThrow[Exception]`, so called _capability_, in scope. Looks cool, isn't it? :)
+
+However, only time will show if it's feasible to make it 'non-boilerplatty' and useful.
+
+<br/>
+
+Slides: [http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092](http://www.slideshare.net/Odersky/scala-days-san-francisco-45917092)
+
+### Jonas Bonér: "Life Beyond the Illusion of Present"
+
+The next keynote by Typesafe CTO [Jonas Bonér](https://twitter.com/jboner) was about essential concepts of distributed systems design. I always enjoy his talks on this topic. They are great at introducing people to new ways of thinking and reasoning about state and events in distributed systems.
+
+<figure class="third">
+	<a href="https://c4.staticflickr.com/4/3739/18992606695_83ea3f0278_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3739/18992606695_f08747e1dd_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/562/18804946718_c836a19701_h.jpg">
+		<img src="https://c1.staticflickr.com/1/562/18804946718_ec5056fbe3_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/492/18995633361_3e953cdcef_h.jpg">
+		<img src="https://c1.staticflickr.com/1/492/18995633361_6457beb889_m.jpg">
+	</a>
+	<figcaption>"Life Beyond the Illusion of Present" - Jonas Bonér.</figcaption>
+</figure>
+
+> "Tracking time is actually tracking causality."
+
+That's what important: **Causality** and events **Ordering**.
+
+* There is no such thing as _reliable_ time or _guaranteed_ message delivery.
+* Think in **facts**.
+* Never do in-place updates, just collect and apply new events/facts.
+* [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) to the rescue!
+
+[Event sourcing](http://martinfowler.com/eaaDev/EventSourcing.html) is the key. Updating the locally observed state is simply merging new facts with old ones:
+
+{% highlight scala %}
+val newLocalPresent = 
+            observedPasts.foldLeft(oldLocalPresent) { _ merge _ }
+{% endhighlight %}
+
+Slides: [http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present](http://www.slideshare.net/jboner/life-beyond-the-illusion-of-present)
+
+### Akka Actors vs Types
+
+[Rolands](https://twitter.com/rolandkuhn) talk (*"Project Gålbma: Actors vs. Types"*) was actually my biggest highlight of this conference. A new iteration of a massive work to make [Akka Actors Typed](http://doc.akka.io/docs/akka/snapshot/scala/typed.html#typed-scala) was introduced.
+
+I'm a true fan of [Akka framework](http://akka.io). It is a great piece of software and it really helps building scalable applications faster and more effectively.
+But lack of type safety when working with actors was always a bit ... *strange* :). 
+
+Development with Akka nowadays largely depends on knowing common conventions and patterns. Could be cool if a type system, rather than just docs (which are **awesome** for Akka) and blogs, guides you in the right direction.
+
+<figure class="first">
+	<a href="https://c1.staticflickr.com/1/298/18805596168_6d27f33ee5_h.jpg">
+		<img src="https://c1.staticflickr.com/1/298/18805596168_5184ca630c_m.jpg">
+	</a>
+	<figcaption>Typed Channels in Akka 2.1, - Roland Kuhn.</figcaption>
+</figure>
+
+New typed Actor API proposal made me think: "Yes, that's a proper way to do it in Scala, language with a rich and strong type system."
+
+<figure class="third">
+	<a href="https://c1.staticflickr.com/1/534/18967021826_046828dfbe_h.jpg">
+		<img src="https://c1.staticflickr.com/1/534/18967021826_91f2ca40c5_m.jpg">
+	</a>	
+	<a href="https://c4.staticflickr.com/4/3773/18967021426_38265a5e8e_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3773/18967021426_bb3f33d47e_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/303/18807052649_32adba7232_h.jpg">
+		<img src="https://c1.staticflickr.com/1/303/18807052649_78354c014d_m.jpg">
+	</a>
+	<figcaption>Akka Typed API proposal, - Roland Kuhn.</figcaption>
+</figure>
+
+* `Actor` is characterised from now by a `Behavior[T]` represented as a partial function `Message | Event => Behavior`
+* No more overridable methods like `preStart`, `postStop`, etc: you can define reaction to these *Signals* in behavior function.
+* No more direct reference to actor `context`.
+* No more built-in `sender()`: you have to encode a sender reference to your message API.
+
+Latest Akka Typed docs and examples can be found here: [http://doc.akka.io/docs/akka/snapshot/scala/typed.html](http://doc.akka.io/docs/akka/snapshot/scala/typed.html)
+
+### Lambda Architecture & Spark Streaming
+
+Another notable talk was by [Helena Edelson](https://twitter.com/helenaedelson) - *"Lambda Architecture with Spark Streaming, Kafka, Cassandra, Akka and Scala"*.
+
+She demonstrated how you can build stream processing pipelines leveraging high composability of this stack.
+
+Althought a bit too much Cassandra advertising (I like C*, but still), it was cool to see some snippets how you can glue these things together and what are potential use-cases.
+And of course [Spark connector](https://github.com/datastax/spark-cassandra-connector) for Cassandra is pretty awesome. Now other NoSQL vendors start understanding[^4] necessity of Spark-support as well. :)
+
+Few years ago [Storm](https://storm.apache.org) was almost a standard component of ['Lambda architecture'](http://lambda-architecture.net).  Event the term itself was coined by the [creator of Storm](http://nathanmarz.com). Now Spark Streaming together with Akka Streams, Kafka and others might get this place.
+
+<br/>
+
+Slides: [http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala](http://www.slideshare.net/helenaedelson/lambda-architecture-with-spark-spark-streaming-kafka-cassandra-akka-and-scala)
+
+### Monad Transformers for Mere Mortals
+
+How often do you have to deal with nested containers? For example, `Future[Option[T]]` or `Future[Either[L,R]]`.
+Composing them together in *for-comprehensions* is not than easy. Consider this code sample from [Erik Bakkers](https://twitter.com/eamelink) presentation *"Options in Futures, how to unsuck them"*:
+
+{% highlight scala %}
+val fa: Future[Option[Int]] = ???
+val fb: Future[Option[Int]] = ???
+
+// Problem, `a` and `b` are Option[Int], and not Int
+val result = 
+  for {
+  	a <- fa
+  	b <- fb
+  } yield a - b
+
+{% endhighlight %}
+
+To solve this, people usually end up creating a set of utility functions, implicit *transformers*, like *FutureOption[T]*, that allow you to *flatten containers*.
+Althought it works, you still have to steal^Wwrite these.
+
+Consider another solution using [Scalaz](https://github.com/scalaz/scalaz) `OptionT`, a so called *Monad Transformer*:
+
+{% highlight scala %}
+val fa: Future[Option[Int]] = ???
+val fb: Future[Option[Int]] = ???
+
+// Here, a and b are Int, extracted from both the Future and Option!
+val finalOptionT = 
+	for {
+		a <- OptionT(fa)
+		b <- OptionT(fb)
+	} yield a - b
+
+// And to get back to the normal structure
+val finalFutureOption: Future[Option[Int]] = finalOptionT.run
+
+{% endhighlight %}
+
+Often people in Scala community think that [Scalaz](https://github.com/scalaz/scalaz) or [Shapeless](https://github.com/milessabin/shapeless) are too hardcore and avoid them. 
+
+Sometimes it's a valid point :), but I prefer to borrow just essential stuff.
+Like awesome `ValidationNEL` of Scalaz, or `HList` of Shapeless, or these Monad Transformers `OptionT`, `\/` that Erik demonstrated.
+
+<br/>
+
+Slides from Eriks workshop: [https://speakerdeck.com/eamelink/flatten-your-code](https://speakerdeck.com/eamelink/flatten-your-code).
+
+<br/>
+
+I can also recommend another great presentation on Scalaz '*gateway drugs*' by [Brendan McAdams](http://twitter.com/rit): [https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs](https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs).
+
+### Functions-passing style
+
+Followed by their [work on Spores](https://speakerdeck.com/heathermiller/spores-towards-function-passing-style-in-the-age-of-concurrency-and-distribution) [Heather Miller](http://twitter.com/heathercmiller) and [Philipp Haller](http://twitter.com/philippkhaller) presented this year a new distributed programming model based on Spores: *"Function-Passing Style, A New Model for Asynchronous and Distributed Programming"*.
+
+* In this model, unlike with traditional data passing, you actually send a serialized clojures that are executed on the remote node against target data.
+* The data holder, or *Silo*, resides on the node that has target data. Location transparency in system is achieved by introducing a *SiloRef* which encapsulates lazy application of the clojure to target data in remote *Silo*.
+* Serializability of clojures is guaranteed by [Spores](https://speakerdeck.com/heathermiller/spores-towards-function-passing-style-in-the-age-of-concurrency-and-distribution).
+* There is a limitation of Spores: nodes running application code should have the same classpath (otherwise deserialization will fail).
+
+It's still unclear to me how to handle concurrent updates to the same data. Probably it's out of the models scope and can be tackled by using [CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)-like data structures or just immutable data.
+
+<figure class="third">
+	<a href="https://c1.staticflickr.com/1/481/18836895788_3b74f49617_h.jpg">
+		<img src="https://c1.staticflickr.com/1/481/18836895788_6de1b850f4_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/325/19027662511_cab0693845_h.jpg">
+		<img src="https://c1.staticflickr.com/1/325/19027662511_1ab15a5978_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/473/18836895088_16d6704623_h.jpg">
+		<img src="https://c1.staticflickr.com/1/473/18836895088_055e5a105b_m.jpg">
+	</a>
+	<figcaption>"Function-Passing Style, A New Model for Asynchronous and Distributed Programming" - Philipp Haller and Heather Miller.</figcaption>
+</figure>
+
+<br/>
+
+Overall I think it's great and makes a lot of sense for data-crunching systems like [Spark](http://spark.apache.org/) where data locality is the key and sending it over the wire is not an option (because of the volumes).
+
+<br/>
+
+Slides: [https://speakerdeck.com/heathermiller/function-passing-style-typed-distributed-functional-programming](https://speakerdeck.com/heathermiller/function-passing-style-typed-distributed-functional-programming)
+
+<br/>
+
+### Rapture Result and Modes 
+
+[Jon Pretty](https://twitter.com/propensive) presentation with a quite complicated name (*"Delimited dependently-typed monadic checked exceptions in Scala"*) attracted my attention because of two things: 
+
+* Interesting concept of abstracting the actual return type of library API (using so called *Modes*).
+* A new `Result` container similar to `Either`, `ValidationNEL` and others.
+
+<figure class="second">
+	<a href="https://c4.staticflickr.com/4/3683/19027106135_84199294cb_h.jpg">
+		<img src="https://c4.staticflickr.com/4/3683/19027106135_74e7bd5d05_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/434/18404561684_4128b103f3_h.jpg">
+		<img src="https://c1.staticflickr.com/1/434/18404561684_bb23a97350_m.jpg">
+	</a>
+	<figcaption>"Delimited dependently-typed monadic checked exceptions in Scala" - Jon Pretty.</figcaption>
+</figure>
+
+<br/>
+
+[Rapture.io](http://rapture.io) *Modes* allow users to choose the return type of the library API:
+
+{% highlight scala %}
+
+import modes.returnEither._
+Json.parse("[1, 2, 3]") // will have return type Either[ParseException, Json]
+
+... 
+
+import modes.returnFuture._
+Json.parse("[1, 2, 3]") // will immediately return a Future[Json]
+
+{% endhighlight %}
+
+It's looks like a cool magic, but I see few different scenarios where this might be useful: 
+
+* Turning library API to blocking for tests and to async in your main code.
+* Switching between, for example, `Either`-based or `Try`-based API without having to write your own wrappers.
+
+The tri-state `Return` type looks something in between of `Either` or `ValidationNEL`: 
+
+{% highlight scala %}
+
+val result: Result[Json, ParseException] = ...
+
+// result might be: 
+// `Answer` - successful result
+// `Errata` - contains _collected_ failures
+// `Unexpected` - contains a signle (non-recoverable?) exception
+
+{% endhighlight %}
+
+I liked the trick of simulating union types using '*with*': 
+
+{% highlight scala %}
+
+// Read 'with' as 'or'
+val result: Result[Json, DatabaseException with IOException with SerializationException] = ...
+
+{% endhighlight %}
+
+This is useful here as `Errata` is actually a typed Multimap.
+
+<br/>
+
+Slides: [http://rapture.io/talks/exceptions/sanfrancisco.html](http://rapture.io/talks/exceptions/sanfrancisco.html)
+
+<br/>
+
+### Kamon and Akka metrics
+
+There is a huge demand for Akka monitoring nowadays. [Typesafe console](http://resources.typesafe.com/docs/console/manual/overview.html) was looking great, but tracing performance was ... awful.
+
+Authors of [Kamon](http://kamon.io) are trying to meet that demand with their toolkit for collecting actor metrics and traces.
+
+[Ivan Topolnjak](https://twitter.com/ivantopo) showed in his talk, *"Kamon: Metrics and traces for your reactive application"*, how they were able to minimise performance impact of metrics collection to the system.
+It was interesting to know that they are using [HdrHistogram](https://github.com/HdrHistogram/HdrHistogram) for this. 
+
+HdrHistogram (High Dynamic Range Histogram) is "A Histogram that supports recording and analyzing sampled data value counts across a configurable integer value range with configurable value precision within the range"[^5]. And it is really-really fast. :)
+
+<figure class="second">
+	<a href="https://c1.staticflickr.com/1/269/18839428380_237f0aafa1_h.jpg">
+		<img src="https://c1.staticflickr.com/1/269/18839428380_deec11dc9b_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/525/19021632152_4ee5d63f1a_h.jpg">
+		<img src="https://c1.staticflickr.com/1/525/19021632152_4cddb00ffb_m.jpg">
+	</a>
+	<figcaption>"Kamon: Metrics and traces for your reactive application" - Ivan Topolnjak.</figcaption>
+</figure>
+
+Tracing actor message flows is another important problem which is not fully solved yet.
+There is a still experimental [Akka Tracing](https://github.com/levkhomich/akka-tracing) extension. And Kamon also has some of these capabilities: [http://kamon.io/core/tracing/core-concepts/](http://kamon.io/core/tracing/core-concepts/).
+It would be cool to eventually have a visualization for flows like the one [Twitter Zipkin](https://github.com/twitter/zipkin) provides.
+
+Also would be nice to be able to trace composite `Futures`.
+
+### Other notable talks
+
+* [Amanda Laucher](http://twitter.com/pandamonial): "Types vs Tests : An Epic Battle?". That was a great talk and its old version is even available on InfoQ: [http://www.infoq.com/presentations/Types-Tests](http://www.infoq.com/presentations/Types-Tests)
+* [Richard Dallaway](http://twitter.com/d6y): "Towards Browser and Server Utopia with Scala.JS: an example using CRDTs". Cool example of coding CRDTs in Scala.JS.
+* [Josh Suereth](http://twitter.com/jsuereth) and [Eugene Yokota](http://twitter.com/eed3si9n): "The road to sbt 1.0 is paved with server". That was an entertaining talk about new [sbt](http://www.scala-sbt.org) features and how *sbt-server* is going to change our lives. =)
+
+##### Links
+{:.no_toc}
+
+[^1]: [Matthias Doenitz](https://twitter.com/sirthias): [http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/](http://www.meetup.com/Dutch-Scala-Enthusiasts/events/218602810/)
+[^2]: [Nilanjan Raychaudhuri](https://twitter.com/nraychaudhuri): [http://www.meetup.com/amsterdam-scala/events/202145202/](http://www.meetup.com/amsterdam-scala/events/202145202/)
+[^3]: [Heiko Seeberger](https://twitter.com/hseeberger): [http://www.meetup.com/amsterdam-scala/events/178162102/](http://www.meetup.com/amsterdam-scala/events/178162102/)
+[^4]: Basho data platform: [http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/](http://basho.com/posts/press/new-basho-data-platform-provides-outstanding-operational-simplicity-for-enterprise-big-data-applications/)
+[^5]: High Dynamic Range Histogram: [http://hdrhistogram.github.io/HdrHistogram/](http://hdrhistogram.github.io/HdrHistogram/)
