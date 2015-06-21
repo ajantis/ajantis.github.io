@@ -118,7 +118,7 @@ That's what important: **Causality** and events **Ordering**.
 
 [Event sourcing](http://martinfowler.com/eaaDev/EventSourcing.html) is the key. Updating the locally observed state is simply merging new facts with old ones:
 
-{% highlight ruby %}
+{% highlight scala %}
 val newLocalPresent = 
             observedPasts.foldLeft(oldLocalPresent) { _ merge _ }
 {% endhighlight %}
