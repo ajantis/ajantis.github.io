@@ -71,7 +71,7 @@ Nevetheless it will probably take at least a couple of years till we get a chanc
 #### Expressing effects in types
 {:.no_toc}
 
-Another interesting concept that Martin mentioned is 'better treatment of effects' which is essentially about being able to express code side effects (throwing exceptions, IO, null-dereferencing) via type system.
+Another interesting concept that Martin mentioned is a 'better treatment of effects' which is essentially about being able to express code side effects (throwing exceptions, IO, null-dereferencing) via type system.
 
 <figure class="second">
 	<a href="https://c1.staticflickr.com/1/291/18803803110_96e9a53ea5_h.jpg">
@@ -298,12 +298,12 @@ Json.parse("[1, 2, 3]") // will immediately return a Future[Json]
 
 {% endhighlight %}
 
-It's looks like a cool magic, but I see few different scenarios where this might be useful: 
+It's looks like a cool magic, but I see a couple of different scenarios where this might be useful: 
 
 * Turning library API to blocking for tests and to async in your main code.
 * Switching between, for example, `Either`-based or `Try`-based API without having to write your own wrappers.
 
-The tri-state `Return` type looks something in between of `Either` or `ValidationNEL`: 
+The tri-state `Return` type looks something between `Either` and `ValidationNEL`: 
 
 {% highlight scala %}
 
@@ -316,7 +316,7 @@ val result: Result[Json, ParseException] = ...
 
 {% endhighlight %}
 
-I liked the trick of simulating union types using '*with*': 
+I like the trick of simulating union types using '*with*': 
 
 {% highlight scala %}
 
