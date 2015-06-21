@@ -230,6 +230,40 @@ Slides from Eriks workshop: [https://speakerdeck.com/eamelink/flatten-your-code]
 
 I can also recommend another great presentation on Scalaz '*gateway drugs*' by [Brendan McAdams](http://twitter.com/rit): [https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs](https://speakerdeck.com/bwmcadams/scaladays-sf-2015-a-skeptics-guide-to-scalaz-gateway-drugs).
 
+### Functions-passing style
+
+Followed by their [work on Spores](https://speakerdeck.com/heathermiller/spores-towards-function-passing-style-in-the-age-of-concurrency-and-distribution) [Heather Miller](http://twitter.com/heathercmiller) and [Philipp Haller](http://twitter.com/philippkhaller) presented this year a new distributed programming model based on Spores: *"Function-Passing Style, A New Model for Asynchronous and Distributed Programming"*.
+
+* In this model, unlike with traditional data passing, you actually send a serialized clojures that are executed on the remote node against target data.
+* The data holder, or *Silo*, resides on the node that has target data. Location transparency in system is achieved by introducing a *SiloRef* which encapsulates lazy application of the clojure to target data in remote *Silo*.
+* Serializability of clojures is guaranteed by [Spores](https://speakerdeck.com/heathermiller/spores-towards-function-passing-style-in-the-age-of-concurrency-and-distribution).
+* There is a limitation of Spores: nodes running application code should have the same classpath (otherwise deserialization will fail).
+
+It's still unclear to me how to handle concurrent updates to the same data. Probably it's out of the models scope and can be tackled by using [CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type)-like data structures or just immutable data.
+
+<figure class="third">
+	<a href="https://c1.staticflickr.com/1/481/18836895788_3b74f49617_h.jpg">
+		<img src="https://c1.staticflickr.com/1/481/18836895788_6de1b850f4_m.jpg">
+	</a>	
+	<a href="https://c1.staticflickr.com/1/325/19027662511_cab0693845_h.jpg">
+		<img src="https://c1.staticflickr.com/1/325/19027662511_1ab15a5978_m.jpg">
+	</a>
+	<a href="https://c1.staticflickr.com/1/473/18836895088_16d6704623_h.jpg">
+		<img src="https://c1.staticflickr.com/1/473/18836895088_055e5a105b_m.jpg">
+	</a>
+	<figcaption>"Function-Passing Style, A New Model for Asynchronous and Distributed Programming" - Philipp Haller and Heather Miller.</figcaption>
+</figure>
+
+<br/>
+
+Overall I think it's great and makes a lot of sense for data-crunching systems like [Spark](http://spark.apache.org/) where data locality is the key and sending it over the wire is not an option (because of the volumes).
+
+<br/>
+
+Slides: [https://speakerdeck.com/heathermiller/function-passing-style-typed-distributed-functional-programming](https://speakerdeck.com/heathermiller/function-passing-style-typed-distributed-functional-programming)
+
+<br/>
+
 ##### Links
 {:.no_toc}
 
