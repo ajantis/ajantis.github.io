@@ -366,6 +366,8 @@ Also would be nice to be able to trace composite `Futures`.
 * [Richard Dallaway](http://twitter.com/d6y): "Towards Browser and Server Utopia with Scala.JS: an example using CRDTs". Cool example of coding CRDTs in Scala.JS.
 * [Josh Suereth](http://twitter.com/jsuereth) and [Eugene Yokota](http://twitter.com/eed3si9n): "The road to sbt 1.0 is paved with server". That was an entertaining talk about new [sbt](http://www.scala-sbt.org) features and how *sbt-server* is going to change our lives. =)
 
+I will update this post with the links to videos as soon as they become available on [Parleys](https://parleys.com). 
+
 ##### Links
 {:.no_toc}
 
